@@ -112,21 +112,46 @@ export default function Products() {
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-purple-200 to-purple-100 text-gray-800">
       {/* Navbar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md flex items-center justify-between px-6 py-4">
-        <Link to="/" className="text-purple-600 font-bold text-3xl hover:text-purple-800 transition">
-          JOTMART
-        </Link>
-        <nav className="hidden md:flex space-x-6">
-          <Link to="/" className="text-gray-700 text-lg hover:text-purple-600">Home</Link>
-          <Link to="/products" className="text-gray-700 text-lg hover:text-purple-600">Products</Link>
-          <Link to="/cart" className="text-gray-700 text-lg hover:text-purple-600">Cart</Link>
-          <Link to="/contact" className="text-gray-700 text-lg hover:text-purple-600">Contact</Link>
-        </nav>
-      </header>
+     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 py-4">
+  <div className="flex items-center justify-between">
+    <Link to="/" className="text-purple-600 font-bold text-3xl hover:text-purple-800 transition">
+      JOTMART
+    </Link>
+
+    {/* Hamburger Icon */}
+    <button
+      className="md:hidden text-3xl text-purple-600 focus:outline-none"
+      onClick={() => setShowMobileMenu(!showMobileMenu)}
+    >
+      ☰
+    </button>
+
+    {/* Desktop Menu */}
+    <nav className="hidden md:flex space-x-6">
+      <Link to="/" className="text-gray-700 text-lg hover:text-purple-600">Home</Link>
+      <Link to="/products" className="text-gray-700 text-lg hover:text-purple-600">Products</Link>
+      <Link to="/cart" className="text-gray-700 text-lg hover:text-purple-600">Cart</Link>
+      <Link to="/contact" className="text-gray-700 text-lg hover:text-purple-600">Contact</Link>
+    </nav>
+  </div>
+
+  {/* Mobile Menu */}
+  {showMobileMenu && (
+    <div className="md:hidden mt-4 space-y-2">
+      <Link to="/" className="block text-gray-700 text-lg hover:text-purple-600">Home</Link>
+      <Link to="/products" className="block text-gray-700 text-lg hover:text-purple-600">Products</Link>
+      <Link to="/cart" className="block text-gray-700 text-lg hover:text-purple-600">Cart</Link>
+      <Link to="/contact" className="block text-gray-700 text-lg hover:text-purple-600">Contact</Link>
+    </div>
+  )}
+</header>
+
 
       {/* Search bar */}
       <div className="pt-32 px-4 flex justify-center">
