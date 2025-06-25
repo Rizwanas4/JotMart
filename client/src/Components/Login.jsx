@@ -13,7 +13,7 @@ export default function Login() {
   e.preventDefault();
 
   try {
-    const response = await axios.post("https://jotmart-backend.onrender.com/login", {
+    const response = await axios.post("https://jotmart-backend.onrender.com/api/login", {
       email,
       password
     });
