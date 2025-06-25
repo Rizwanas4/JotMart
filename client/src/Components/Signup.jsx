@@ -14,7 +14,7 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://jotmart-backend.onrender.com/register", {
+      const response = await axios.post("https://jotmart-backend.onrender.com/api/register", {
   name,
   email,
   password
